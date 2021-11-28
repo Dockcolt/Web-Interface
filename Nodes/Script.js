@@ -7,10 +7,6 @@ app.get('/', function(request, response){
     response.sendFile(path.join(__dirname, '../htmlFiles', 'index.html'));
 })
 
-app.get('*', function(request, response){
-    response.send('404 page not found');
-})
-
 // Creating connection for mysql
 var con = mysql.createConnection({
     host: "localhost",
@@ -24,11 +20,16 @@ con.connect(function(err) {
     console.log("Connected!");
 });
 
-/*
-con.query('Select A.* FROM artist A', (err, res) => {
-    return console.log(res);
-});
-*/
+
+app.get('/display', function(request, response){
+    con.query("SELECT A.name FROM artist A", function(err, results, fields){
+        if(err) throw err;
+        response.send(results);
+    });
+    //response.sendFile(path.join(__dirname, '../htmlFiles', 'display.html'));
+})
+
+
 
 app.listen('3000', function(){
     console.log('Listening to port 3000');

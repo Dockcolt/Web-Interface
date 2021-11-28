@@ -5,7 +5,7 @@
 </head>
 <body>
     <div class="table-data">
-<h2>Display Data using Node.js & MySQL</h2>
+<h2>Interface for database</h2>
     <table border="1">
         <tr>
             <th>S.N</th>
@@ -24,12 +24,10 @@
         %>
         <tr>
             <td><%=i; %></td>
-            <td><%=data.fullName %></td>
+            <td><%=artist.name %></td>
             <td><%=data.emailAddress %></td>
             <td><%=data.city %></td>
             <td><%=data.country %></td>
-            <td><a href="/users/edit/<%=data.id%>">Edit</a></td>
-            <td><a href="/users/delete/<%=data.id%>">Delete</a></td>
         </tr>
         <%  i++; }) %>
         <% } else{ %>
